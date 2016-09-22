@@ -2,75 +2,77 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation } from '@angular/core';
+import './infastructure/inital.loader.ts';
 
 import { AppState } from './app.service';
+import { GlobalState } from './infastructure/global-state-service/global.state';
+import { BaThemePreloader, BaThemeSpinner } from './theme/services/';
+
+
+///require("./AdminLTE");
 
 /*
  * App Component
  * Top Level Component
  */
 @Component({
-  selector: 'app',
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: [
-    './app.style.css'
-  ],
-  template: `
-    <nav>
-      <span>
-        <a [routerLink]=" ['./'] ">
-          Index
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./home'] ">
-          Home
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./detail'] ">
-          Detail
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./about'] ">
-          About
-        </a>
-      </span>
-    </nav>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
-      </div>
-    </footer>
-  `
-})
+               selector:      'app',
+               encapsulation: ViewEncapsulation.None,
+               styleUrls:     [
+                   '../assets/css/AdminLTE.css',
+                   '../assets/css/skins/skin-blue.css',
+                   './app.style.scss'
+               ],
+               templateUrl:   './layout.html'
+           })
 export class App {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
 
-  constructor(
-    public appState: AppState) {
+    name = 'Angular 2 Webpack Starter';
+    url = 'https://twitter.com/AngularClass';
+    isMenuCollapsed: boolean = false;
+    isMenuHidden: boolean = false;
 
-  }
+    constructor (public appState: AppState, private _state: GlobalState, private _spinner: BaThemeSpinner) {
+        this._state.subscribe('menu.isHidden', (isHidden) => {
+            this.isMenuHidden = isHidden;
+        });
+        this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
+            this.isMenuCollapsed = isCollapsed;
 
-  ngOnInit() {
-    console.log('Initial App State', this.appState.state);
-  }
+            if (!this.isMenuHidden) {
+                jQuery('body').toggleClass('sidebar-collapse');
+            } else {
+                if (this.isMenuCollapsed) {
+                    jQuery('body').removeClass('sidebar-open').removeClass('sidebar-collapse');
+                } else {
+                    jQuery('body').addClass('sidebar-open');
+                }
+            }
+
+
+        });
+
+
+        jQuery('.content-wrapper').click(function () {
+            if (!this.isMenuCollapsed && this.isMenuHidden) {
+                jQuery('body').removeClass('sidebar-open');
+            }
+        });
+    }
+
+    ngOnInit () {
+        console.log(window[ 'AdminLTE' ]);
+        //  setTimeout(window['AdminLTE'].layout.fix(), 5000);
+        console.log('Initial App State', this.appState.state);
+
+    }
+
+    public ngAfterViewInit (): void {
+        // hide spinner once all loaders are completed
+        BaThemePreloader.load().then((values) => {
+            this._spinner.hide();
+        });
+    }
 
 }
 

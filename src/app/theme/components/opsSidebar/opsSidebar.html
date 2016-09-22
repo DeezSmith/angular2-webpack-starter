@@ -1,0 +1,13 @@
+<aside class="main-sidebar" (mouseleave)="hoverElemTop=outOfArea" sidebarResize>
+	<!-- sidebar: style can be found in sidebar.less -->
+	<section class="sidebar">
+
+		<ops-menu [menuRoutes]="routes"
+		          [menuHeight]="menuHeight"
+		          [sidebarCollapsed]="isMenuCollapsed"
+		          (expandMenu)="menuExpand()"></ops-menu>
+
+		<!-- /.sidebar-menu -->
+	</section>
+	<!-- /.sidebar -->
+</aside>

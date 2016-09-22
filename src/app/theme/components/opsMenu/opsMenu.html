@@ -1,0 +1,13 @@
+	<ul id="al-sidebar-list" class="sidebar-menu" baSlimScroll [baSlimScrollOptions]="{height: menuHeight}">
+		<li class="sidebar-item header">NAVIGATION</li>
+
+		<ops-menu-item
+				[menuItem]="item"
+				(itemHover)="hoverItem($event)"
+				(toggleSubMenu)="toggleSubMenu($event)"
+				*ngFor="let item of menuItems"></ops-menu-item>
+		<!-- Optionally, you can add icons to the links -->
+
+	</ul>
+	<div class="sidebar-hover-elem" [ngStyle]="{top: hoverElemTop + 'px', height: hoverElemHeight + 'px'}"
+	     [ngClass]="{'show-hover-elem': showHoverElem }"></div>

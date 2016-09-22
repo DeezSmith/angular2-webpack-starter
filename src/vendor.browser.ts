@@ -21,11 +21,18 @@ import '@angularclass/hmr';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
+// 3rd Party
+// Web dependencies
+import 'jquery';
+import 'font-awesome-sass-loader';
+import 'lodash';
+import 'bootstrap-sass/assets/javascripts/bootstrap.js';
+
 if ('production' === ENV) {
-  // Production
+    // Production
 
 
 } else {
-  // Development
+    // Development
 
 }
