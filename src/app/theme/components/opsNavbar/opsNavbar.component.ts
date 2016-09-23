@@ -13,11 +13,6 @@ export class OpsNavbar {
     logo = 'assets/img/ops-logo-full.png';
     logoSm = 'assets/img/ops-logo-sm.png';
 
-    profile = {
-        name: 'Derek Smith',
-        agentNo: '123408',
-        icon: 'Batman'
-    };
 
     public isScrolled: boolean = false;
     public isMenuCollapsed: boolean = false;

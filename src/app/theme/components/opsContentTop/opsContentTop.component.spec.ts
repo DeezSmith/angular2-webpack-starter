@@ -3,12 +3,12 @@
  */
 import { TestBed, async, inject } from '@angular/core/testing';
 import { By }              from '@angular/platform-browser';
-import { OpsControlSidebar } from './opsControlSidebar.component';
 import { GlobalState } from '../../../infastructure/global-state-service/global.state';
+import { OpsContentTop } from './';
 
 
 //Suite
-describe('Theme: OpsControlSidebar', () => {
+describe('Theme: OpsContentTop', () => {
     //BASE VARS
     let fixture: any,
         comp: any;
@@ -18,11 +18,11 @@ describe('Theme: OpsControlSidebar', () => {
         // refine the test module by declaring the test component
         TestBed.configureTestingModule({
                                            providers:    [ GlobalState ],
-                                           declarations: [ OpsControlSidebar ],
+                                           declarations: [ OpsContentTop ],
                                        })
             .compileComponents();
         // create component and test fixture
-        fixture = TestBed.createComponent(OpsControlSidebar);
+        fixture = TestBed.createComponent(OpsContentTop);
 
         // get test component from the fixture
         comp = fixture.componentInstance; //<-- This is the Class
@@ -33,23 +33,23 @@ describe('Theme: OpsControlSidebar', () => {
         expect(comp).toBeDefined();
     });
 
-    it('should display show/hide using ngClass', () => {
+    it('should display activeLink title', () => {
         //Pull DOM
-        let el = fixture.debugElement.query(By.css('aside'));
+        let el = fixture.debugElement.query(By.css('h1'));
 
         //How to pull a service defined in the TestBed
         let state = TestBed.get(GlobalState);
         //send a notification
-        state.notifyDataChanged('controlSidebar.isHidden', false);
+        state.notifyDataChanged('menu.activeLink', {title: 'Test'});
         //Have Angular Refresh DOM
         fixture.detectChanges();
 
         //Did Class get added?
-        expect(el.classes[ 'control-sidebar-open' ]).toBeTruthy();
+        expect(el.nativeElement.textContent).toContain('Test');
 
         //Switch var manually
-        comp.isControlSidebarHidden = true;
+        comp.activePageTitle = "Test2";
         fixture.detectChanges();
-        expect(el.classes[ 'control-sidebar-open' ]).toBeFalsy();
+        expect(el.nativeElement.textContent).toContain('Test2');
     });
 });

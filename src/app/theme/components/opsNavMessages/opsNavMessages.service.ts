@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class BaMsgCenterService {
+export class OpsNavMessagesService {
 
     private _notifications = [
         {
@@ -16,8 +16,8 @@ export class BaMsgCenterService {
         },
         {
             image: 'assets/img/shopping-cart.svg',
-            text: 'New orders received.',
-            time: '5 hrs ago'
+            text:  'New orders received.',
+            time:  '5 hrs ago'
         },
         {
             name: 'Andrey',
@@ -31,8 +31,8 @@ export class BaMsgCenterService {
         },
         {
             image: 'assets/img/comments.svg',
-            text: 'New comments on your post.',
-            time: '3 days ago'
+            text:  'New comments on your post.',
+            time:  '3 days ago'
         },
         {
             name: 'Kostya',

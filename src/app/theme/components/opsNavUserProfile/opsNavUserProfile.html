@@ -1,0 +1,24 @@
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" class="kameleon-icon with-round-bg primary">
+  <img src="{{ ( profile.icon | opsSvgPicture ) }}" class="user-image" alt="User Image">
+</a>
+<ul class="dropdown-menu">
+  <!-- User image -->
+  <li class="user-header">
+    <img src="{{ ( profile.icon | opsSvgPicture ) }}" class="img-circle" alt="User Image">
+
+    <p>
+      {{profile.name}}
+      <small>Agent No {{profile.agentNo}}</small>
+    </p>
+  </li>
+
+  <!-- Menu Footer-->
+  <li class="user-footer">
+    <div class="pull-left">
+      <a href="#" class="btn btn-default btn-flat">Profile</a>
+    </div>
+    <div class="pull-right">
+      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+    </div>
+  </li>
+</ul>

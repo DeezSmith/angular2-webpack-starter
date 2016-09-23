@@ -29,35 +29,35 @@ export class App {
 
     name = 'Angular 2 Webpack Starter';
     url = 'https://twitter.com/AngularClass';
-    isMenuCollapsed: boolean = false;
-    isMenuHidden: boolean = false;
+    // isMenuCollapsed: boolean = false;
+    // isMenuHidden: boolean = false;
 
     constructor (public appState: AppState, private _state: GlobalState, private _spinner: BaThemeSpinner) {
-        this._state.subscribe('menu.isHidden', (isHidden) => {
-            this.isMenuHidden = isHidden;
-        });
-        this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
-            this.isMenuCollapsed = isCollapsed;
-
-            if (!this.isMenuHidden) {
-                jQuery('body').toggleClass('sidebar-collapse');
-            } else {
-                if (this.isMenuCollapsed) {
-                    jQuery('body').removeClass('sidebar-open').removeClass('sidebar-collapse');
-                } else {
-                    jQuery('body').addClass('sidebar-open');
-                }
-            }
-
-
-        });
-
-
-        jQuery('.content-wrapper').click(function () {
-            if (!this.isMenuCollapsed && this.isMenuHidden) {
-                jQuery('body').removeClass('sidebar-open');
-            }
-        });
+        // this._state.subscribe('menu.isHidden', (isHidden) => {
+        //     this.isMenuHidden = isHidden;
+        // });
+        // this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
+        //     this.isMenuCollapsed = isCollapsed;
+        //
+        //     if (!this.isMenuHidden) {
+        //         jQuery('body').toggleClass('sidebar-collapse');
+        //     } else {
+        //         if (this.isMenuCollapsed) {
+        //             jQuery('body').removeClass('sidebar-open').removeClass('sidebar-collapse');
+        //         } else {
+        //             jQuery('body').addClass('sidebar-open');
+        //         }
+        //     }
+        //
+        //
+        // });
+        //
+        //
+        // jQuery('.content-wrapper').click(function () {
+        //     if (!this.isMenuCollapsed && this.isMenuHidden) {
+        //         jQuery('body').removeClass('sidebar-open');
+        //     }
+        // });
     }
 
     ngOnInit () {

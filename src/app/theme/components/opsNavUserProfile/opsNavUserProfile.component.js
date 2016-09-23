@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require('@angular/core');
-var baMsgCenter_service_1 = require('./baMsgCenter.service');
+var baMsgCenter_service_1 = require('./opsNavUserProfile.service.ts');
 var pipes_1 = require('../../pipes');
 var BaMsgCenter = (function () {
     function BaMsgCenter(_baMsgCenterService) {
@@ -18,8 +18,8 @@ var BaMsgCenter = (function () {
         core_1.Component({
             selector: 'ba-msg-center',
             providers: [baMsgCenter_service_1.BaMsgCenterService],
-            styles: [require('./baMsgCenter.scss')],
-            template: require('./baMsgCenter.html'),
+            styles: [require('./opsNavUserProfile.scss')],
+            template: require('./opsNavUserProfile.html'),
             pipes: [pipes_1.BaProfilePicturePipe]
         })
     ], BaMsgCenter);

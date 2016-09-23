@@ -14,17 +14,21 @@ import {
     OpsContentTop,
     OpsMenuService,
     OpsMenuItem,
-    OpsSidebar
+    OpsSidebar,
+    OpsNavMessages,
+    OpsNavNotifications,
+    OpsNavUserProfile
+
 } from './components';
 
 import {
     BaScrollPosition,
-    BaSlimScroll
+    BaSlimScroll,
+    OpsTheme,
 } from './directives';
 
 import { GlobalState } from '../infastructure/global-state-service/global.state';
 import { BaThemePreloader, BaThemeSpinner } from './services/';
-
 
 const NGA_COMPONENTS = [
     OpsNavbar,
@@ -32,12 +36,16 @@ const NGA_COMPONENTS = [
     OpsContentTop,
     OpsMenuItem,
     OpsSidebar,
-    OpsControlSidebar
+    OpsControlSidebar,
+    OpsNavMessages,
+    OpsNavNotifications,
+    OpsNavUserProfile
 ];
 
 const NGA_DIRECTIVES = [
     BaScrollPosition,
-    BaSlimScroll
+    BaSlimScroll,
+    OpsTheme
 ];
 
 const NGA_PIPES = [
